@@ -9,7 +9,6 @@ export class ImageComponent {
   imageDefault: string = '../../../assets/images/error-image.jpg'
   image: string = '';
   text: string = '';
-  @Input() width: number = 550;
 
   @Input('image')
   set changeImage(newImage: string) {

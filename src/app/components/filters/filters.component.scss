@@ -1,5 +1,5 @@
 .filter {
-  background-color: var(--light-color);
+  background-color: var(--white-color);
   border-radius: 0.5rem;
   // padding: 3rem;
   display: flex;
@@ -20,6 +20,6 @@
   }
   .active {
     color: var(--primary-color);
-    background-color: var(--gray-color);
+    background-color: var(--light-color);
   }
 }

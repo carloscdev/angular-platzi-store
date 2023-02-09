@@ -1,7 +1,7 @@
 <nav class="navbar container">
   <figure class="navbar--logo">
     <img src="../../../assets/images/logo.svg" alt="Platzi Store" width="44" height="44">
-    <span>PLATZI STORE</span>
+    <span>MY STORE</span>
   </figure>
   <div class="navbar--profile">
     <div class="navbar--profile__auth">
@@ -11,9 +11,9 @@
       </div>
       <div *ngIf="isAuth">
         <fa-icon [icon]="faUser"></fa-icon>
-        <span>email...</span>
+        <span>{{ profile.email }}</span>
       </div>
-      <div class="is-danger" *ngIf="isAuth">
+      <div class="is-danger" *ngIf="isAuth" (click)="onLogout()">
         <fa-icon [icon]="faRightToBracket"></fa-icon>
         <span>Salir</span>
       </div>
@@ -24,4 +24,4 @@
     </div>
   </div>
 </nav>
-<app-login *ngIf="modalAuth" (modalAuth)="onModalAuth($event)"></app-login>
+<app-login *ngIf="modalAuth" (modalAuth)="onModalAuth($event)" (profile)="onLoadProfile($event)"></app-login>

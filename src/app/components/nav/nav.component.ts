@@ -38,4 +38,13 @@ export class NavComponent implements OnInit {
   onModalAuth(value: boolean) {
     this.modalAuth = value;
   }
+
+  onLoadProfile(profile: UserInterface) {
+    this.profile = profile;
+    this.isAuth = true;
+  }
+
+  onLogout() {
+    this.isAuth = false;
+  }
 }

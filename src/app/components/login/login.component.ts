@@ -16,18 +16,9 @@ export class LoginComponent {
   email = 'admin@mail.com';
   password = 'admin123';
   token = '';
-  profile: UserInterface = {
-    id: '',
-    email: '',
-    password: '',
-    name: '',
-    role: '',
-    avatar: '',
-    creationAt: '',
-    updatedAt: ''
-  }
 
   @Output() modalAuth = new EventEmitter<boolean>();
+  @Output() profile = new EventEmitter<UserInterface>();
 
   constructor(
     private authService: AuthService,
@@ -47,8 +38,8 @@ export class LoginComponent {
         })
       )
       .subscribe((user) => {
-        this.profile = user;
-        console.log(this.profile);
+        this.profile.emit(user);
+        this.onModalAuth();
       });
   }
 
