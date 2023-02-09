@@ -1,0 +1,27 @@
+<nav class="navbar container">
+  <figure class="navbar--logo">
+    <img src="../../../assets/images/logo.svg" alt="Platzi Store" width="44" height="44">
+    <span>PLATZI STORE</span>
+  </figure>
+  <div class="navbar--profile">
+    <div class="navbar--profile__auth">
+      <div (click)="onModalAuth(true)" *ngIf="!isAuth">
+        <fa-icon [icon]="faRightToBracket"></fa-icon>
+        <span>Login</span>
+      </div>
+      <div *ngIf="isAuth">
+        <fa-icon [icon]="faUser"></fa-icon>
+        <span>email...</span>
+      </div>
+      <div class="is-danger" *ngIf="isAuth">
+        <fa-icon [icon]="faRightToBracket"></fa-icon>
+        <span>Salir</span>
+      </div>
+    </div>
+    <div class="navbar--profile__cart">
+      <fa-icon [icon]="faCartShopping"></fa-icon>
+      <span>{{ counterCart }}</span>
+    </div>
+  </div>
+</nav>
+<app-login *ngIf="modalAuth" (modalAuth)="onModalAuth($event)"></app-login>

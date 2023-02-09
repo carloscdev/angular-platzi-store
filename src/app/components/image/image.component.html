@@ -1,0 +1,9 @@
+<figure *ngIf="image; else imageDefaultError">
+  <img (error)="loadImageDefault()" [src]="image" [alt]="text" [width]="width">
+</figure>
+
+<ng-template #imageDefaultError>
+  <figure>
+    <img [src]="imageDefault" alt="Product Image" [width]="width">
+  </figure>
+</ng-template>

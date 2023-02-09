@@ -1,0 +1,19 @@
+<div class="login" (click)="onModalAuth()">
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login--container" (click)="stopPropagation($event)">
+    <h2>
+      <span>LOGIN</span>
+      <strong (click)="onModalAuth()">
+        <fa-icon [icon]="faClose"></fa-icon>
+      </strong>
+    </h2>
+    <label for="email">
+      Email *
+      <input type="email" id="email" name="email" [(ngModel)]="email">
+    </label>
+    <label for="password">
+      Password *
+      <input type="password" id="password" name="password" [(ngModel)]="password">
+    </label>
+    <button type="submit">INGRESAR</button>
+  </form>
+</div>

@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--primary-light-color);
+  &--logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  &--profile {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    &__auth {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      div {
+        display: flex;
+        gap: 1rem;
+        cursor: pointer;
+      }
+    }
+    &__cart {
+      position: relative;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        background-color: var(--danger-color);
+        border-radius: 100%;
+        top: -1.2rem;
+        right: -1.2rem;
+        color: var(--white-color);
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

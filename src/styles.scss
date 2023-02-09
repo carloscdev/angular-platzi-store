@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import url(./assets/styles/normalize.scss);
+
+:root {
+  --primary-color: #40BFFF;
+  --primary-light-color: rgb(64, 191, 255, 0.1);
+  --danger-color: #FF4858;
+  --danger-light-color: rgb(255, 72, 88, 0.1);
+  --white-color: #fff;
+  --gray-color: #ececec;
+  --light-color: #f7f7f7;
+  --black-color: #223263;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--black-color);
+  background-color: var(--gray-color);
+}
+
+.container {
+  max-width: 1080px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+.is-danger {
+  color: var(--danger-color);
+}

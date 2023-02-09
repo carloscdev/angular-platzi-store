@@ -1,0 +1,9 @@
+<section class="filter">
+  <div class="filter--info">
+    <p>{{ totalProducts }} Items</p>
+  </div>
+  <div class="filter--option">
+    <p [class.active]="gridList" (click)="onChangeTypeList(true)"><fa-icon [icon]="faTableCells" class="spinner"></fa-icon></p>
+    <p [class.active]="!gridList" (click)="onChangeTypeList(false)"><fa-icon [icon]="faTableList" class="spinner"></fa-icon></p>
+  </div>
+</section>

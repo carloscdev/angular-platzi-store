@@ -1,0 +1,74 @@
+.login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+  &--container {
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 36rem;
+    max-width: 100%;
+    background-color: var(--white-color);
+    padding: 3rem;
+    border-radius: 0.5rem;
+    display: grid;
+    gap: 3rem;
+    box-shadow: 0 0 30px 3px rgba(0,0,0,0.1);
+    animation: openForm 0.2s linear forwards;
+    animation-delay: 0.5s;
+    transform: translateY(-200%);
+    h2 {
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--gray-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      strong {
+        cursor: pointer;
+        &:hover {
+          color: var(--danger-color);
+        }
+      }
+    }
+    label {
+      font-size: 1.4rem;
+    }
+    input {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--gray-color);
+      border-radius: 0.5rem;
+      height: 3.5rem;
+      margin-top: 1rem;
+      padding: 0 1rem;
+      &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+    }
+    button {
+      background-color: var(--primary-color);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes openForm {
+  from { transform: translateY(-200%); }
+  to { transform: translateX(0%); }
+}

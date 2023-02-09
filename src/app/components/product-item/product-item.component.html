@@ -1,0 +1,47 @@
+<div class="product">
+  <div class="product-item--hot" *ngIf="product.price < 350">
+    HOT
+  </div>
+  <div class="product-item" [class.grid]="!gridList">
+    <section class="product-item--image">
+      <app-image [image]="product.images[0]" [text]="product.title"></app-image>
+      <div *ngIf="gridList" class="product-item--image__options">
+        <p (click)="onShowProductDetail()"><fa-icon [icon]="faEye"></fa-icon></p>
+        <p (click)="onAddToCart()"><fa-icon [icon]="faCartShopping"></fa-icon></p>
+      </div>
+    </section>
+    <div class="product-item--description" *ngIf="gridList; else gridDescription">
+      <h3>{{ product.title }}</h3>
+      <p>
+        {{ product.price | currency:'$ ' }}
+        <span>
+          {{ product.price | discount | currency:'$ '}}
+        </span>
+      </p>
+    </div>
+    <ng-template #gridDescription>
+      <div class="product-item--description">
+        <div class="product-item--description__info">
+          <h3>{{ product.title }}</h3>
+          <p>
+            {{ product.price | currency:'$ ' }}
+            <span>
+              {{ product.price | discount | currency:'$ '}}
+            </span>
+          </p>
+          <small *ngIf="!gridList">
+            {{ product.description }}
+          </small>
+        </div>
+        <div class="product-item--description__options">
+          <button (click)="onAddToCart()">
+            <fa-icon [icon]="faCartShopping"></fa-icon> Add to Cart
+          </button>
+          <button (click)="onShowProductDetail()">
+            <fa-icon [icon]="faEye"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

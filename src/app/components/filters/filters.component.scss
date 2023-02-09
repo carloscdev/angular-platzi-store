@@ -1,0 +1,25 @@
+.filter {
+  background-color: var(--light-color);
+  border-radius: 0.5rem;
+  // padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &--option {
+    display: flex;
+    // gap: 3rem;
+    font-size: 2rem;
+    p {
+      cursor: pointer;
+      padding: 1.5rem;
+    }
+  }
+  &--info {
+    padding: 1.5rem;
+    font-size: 1.4rem;
+  }
+  .active {
+    color: var(--primary-color);
+    background-color: var(--gray-color);
+  }
+}
