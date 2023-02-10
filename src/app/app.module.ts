@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
 
@@ -16,6 +16,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { LoginComponent } from './components/login/login.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     SwiperModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

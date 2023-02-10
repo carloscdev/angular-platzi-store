@@ -15,7 +15,6 @@ export class LoginComponent {
 
   email = 'admin@mail.com';
   password = 'admin123';
-  token = '';
 
   @Output() modalAuth = new EventEmitter<boolean>();
   @Output() profile = new EventEmitter<UserInterface>();
@@ -32,9 +31,8 @@ export class LoginComponent {
   onLogin() {
     this.authService.login(this.email, this.password)
       .pipe(
-        switchMap((response) => {
-          this.token = response.access_token;
-          return this.authService.getProfile(this.token);
+        switchMap(() => {
+          return this.authService.getProfile();
         })
       )
       .subscribe((user) => {

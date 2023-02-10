@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faUser, faCartShopping, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { UserInterface } from 'src/app/interfaces/user.interface';
 import { StoreService } from 'src/app/services/store.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-nav',
@@ -26,13 +28,25 @@ export class NavComponent implements OnInit {
     updatedAt: ''
   }
 
-  constructor(private storeService: StoreService) { }
+  constructor(
+    private storeService: StoreService,
+    private authService: AuthService,
+    private tokenService: TokenService
+  ) { }
 
   ngOnInit() {
     this.storeService.myCart$
       .subscribe(products => {
         this.counterCart = products.length;
       })
+
+    this.authService.isAuth$
+      .subscribe(value => this.isAuth = value);
+
+    if (this.isAuth) {
+      this.authService.getProfile()
+        .subscribe(profile => this.profile = profile);
+    }
   }
 
   onModalAuth(value: boolean) {
@@ -41,10 +55,14 @@ export class NavComponent implements OnInit {
 
   onLoadProfile(profile: UserInterface) {
     this.profile = profile;
-    this.isAuth = true;
+    this.authService.isAuth$
+      .subscribe(value => this.isAuth = value);
   }
 
   onLogout() {
-    this.isAuth = false;
+    this.tokenService.removeToken();
+    this.authService.setIsAuth(false);
+    this.authService.isAuth$
+      .subscribe(value => this.isAuth = value);
   }
 }
