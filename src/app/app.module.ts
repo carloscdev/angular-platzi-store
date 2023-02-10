@@ -17,6 +17,11 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MycartComponent } from './pages/mycart/mycart.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,12 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     BannerComponent,
     LoaderComponent,
     FiltersComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    NotFoundComponent,
+    CategoryComponent,
+    MycartComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

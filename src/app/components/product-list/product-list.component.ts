@@ -1,5 +1,4 @@
-import { tap } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductInterface } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
@@ -10,17 +9,14 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent {
   faClose = faClose;
 
-  limit = 10;
-  offset = 0;
-
   totalCart = 0;
-  isLoading = false;
   shoppingCart: ProductInterface[] = [];
-  productList: ProductInterface[] = [];
-  productListRandom: ProductInterface[] = [];
+  @Input() isLoading = false;
+  @Input() productList: ProductInterface[] = [];
+  @Input() productListRandom: ProductInterface[] = [];
   productDetail: ProductInterface = {
     id: '',
     price: 0,
@@ -45,24 +41,6 @@ export class ProductListComponent implements OnInit {
     this.shoppingCart = this.storeService.getShoppingCart();
   }
 
-  ngOnInit(): void {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.productsService.getProductList(this.limit, this.offset)
-        .pipe(
-          tap((productList) => {
-            for (let i = 0; i < 5; i++) {
-              const random = Math.floor(Math.random() * ((this.limit + this.offset) - 1) + 1);
-              this.productListRandom.push(productList[random]);
-            }
-          })
-        )
-        .subscribe((productList) => {
-          this.productList = productList;
-        });
-    }, 3000);
-    this.isLoading = false;
-  }
   stopPropagation(event: Event) {
     event.stopPropagation()
   }

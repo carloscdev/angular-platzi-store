@@ -1,35 +1,33 @@
-<section class="container">
-  <div class="product-container">
-    <app-banner
-    [productList]="productListRandom"
+<div class="product-container">
+  <app-banner
+  [productList]="productListRandom"
+  (showProductDetail)="onShowProductDetail($event)"
+  ></app-banner>
+  <app-filters
+    [totalProducts]="productList.length"
+    (changeTypeList)="onChangeTypeList($event)"
+  ></app-filters>
+  <div [class.product-grid]="gridList" [class.product-list]="!gridList" *ngIf="productList.length > 0; else loaderContainer">
+    <app-product-item
+    *ngFor="let product of productList"
+    [product]="product"
+    [gridList]="gridList"
     (showProductDetail)="onShowProductDetail($event)"
-    ></app-banner>
-    <app-filters
-      [totalProducts]="productList.length"
-      (changeTypeList)="onChangeTypeList($event)"
-    ></app-filters>
-    <div [class.product-grid]="gridList" [class.product-list]="!gridList" *ngIf="productList.length > 0; else loaderContainer">
-      <app-product-item
-      *ngFor="let product of productList"
-      [product]="product"
-      [gridList]="gridList"
-      (showProductDetail)="onShowProductDetail($event)"
-      (addToCart)="onAddToCart($event)"
-      >
-      </app-product-item>
-    </div>
-    <ng-template #loaderContainer>
-      <div [class.product-grid]="gridList" [class.product-list]="!gridList">
-        <app-loader></app-loader>
-        <app-loader></app-loader>
-        <app-loader></app-loader>
-        <app-loader></app-loader>
-        <app-loader></app-loader>
-        <app-loader></app-loader>
-      </div>
-    </ng-template>
+    (addToCart)="onAddToCart($event)"
+    >
+    </app-product-item>
   </div>
-</section>
+  <ng-template #loaderContainer>
+    <div [class.product-grid]="gridList" [class.product-list]="!gridList">
+      <app-loader></app-loader>
+      <app-loader></app-loader>
+      <app-loader></app-loader>
+      <app-loader></app-loader>
+      <app-loader></app-loader>
+      <app-loader></app-loader>
+    </div>
+  </ng-template>
+</div>
 
 
 <aside (click)="toggleSidebar()" class="product-detail" *ngIf="productDetail" [class.active]="isOpenSidebar">
