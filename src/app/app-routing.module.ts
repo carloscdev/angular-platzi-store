@@ -5,6 +5,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { MycartComponent } from './pages/mycart/mycart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -12,8 +13,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'category',
+    path: 'category/:id',
     component: CategoryComponent
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailComponent
   },
   {
     path: 'my-cart',
@@ -24,7 +29,7 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'error',
+    path: '**',
     component: NotFoundComponent
   }
 ];

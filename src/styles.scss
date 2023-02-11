@@ -39,3 +39,28 @@ img {
 .is-danger {
   color: var(--danger-color);
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+
+button, .button {
+  background-color: var(--primary-light-color);
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  border: none;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s linear, background 0.3s linear;
+  border-radius: 0.5rem;
+  &:hover {
+    background-color: var(--danger-light-color);
+    color: var(--danger-color);
+  }
+}

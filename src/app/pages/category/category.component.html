@@ -1,1 +1,12 @@
-<p>category works!</p>
+<section class="category-page">
+  <app-category-list
+    [categoryList]="categoryList"
+  ></app-category-list>
+
+  <app-product-list
+    [productId]="productId"
+    (scroll)="onScroll($event)"
+    [showBanner]="false"
+    [productList]="productList"
+  ></app-product-list>
+</section>

@@ -22,6 +22,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { MycartComponent } from './pages/mycart/mycart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     NotFoundComponent,
     CategoryComponent,
     MycartComponent,
-    ProfileComponent
+    ProfileComponent,
+    CategoryListComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

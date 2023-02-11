@@ -1,0 +1,19 @@
+<section class="category-list">
+  <ul class="category-list--item" *ngIf="categoryList.length > 0; else loaderContainer">
+    <li *ngFor="let category of categoryList">
+      <a [routerLink]="['/category', category.id]" routerLinkActive="active">
+        <img [src]="category.image" [alt]="category.name" width="50" height="50">
+        {{ category.name }}
+      </a>
+    </li>
+  </ul>
+  <ng-template #loaderContainer>
+    <div class="category-list--item">
+      <app-loader [height]="5"></app-loader>
+      <app-loader [height]="5"></app-loader>
+      <app-loader [height]="5"></app-loader>
+      <app-loader [height]="5"></app-loader>
+      <app-loader [height]="5"></app-loader>
+    </div>
+  </ng-template>
+</section>

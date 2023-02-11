@@ -1,5 +1,9 @@
-<section >
+<section class="home-page">
+  <app-category-list
+    [categoryList]="categoryList"
+  ></app-category-list>
   <app-product-list
+  [productId]="productId"
   (scroll)="onScroll($event)"
   [productList]="productList"
   [productListRandom]="productListRandom"

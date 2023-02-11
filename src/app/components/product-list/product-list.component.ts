@@ -14,9 +14,16 @@ export class ProductListComponent {
 
   totalCart = 0;
   shoppingCart: ProductInterface[] = [];
+  // @Input() productId: string | null = null;
+  @Input() set productId(id: string | null)  {
+    if(id) {
+      this.onShowProductDetail(id);
+    }
+  };
   @Input() isLoading = false;
   @Input() productList: ProductInterface[] = [];
   @Input() productListRandom: ProductInterface[] = [];
+  @Input() showBanner = true;
   productDetail: ProductInterface = {
     id: '',
     price: 0,
@@ -55,7 +62,9 @@ export class ProductListComponent {
       .subscribe({
         next: (product) => {
           this.productDetail = product;
-          this.toggleSidebar();
+          if (!this.isOpenSidebar) {
+            this.isOpenSidebar = true;
+          }
         },
         error: (error) => console.log(error),
       });

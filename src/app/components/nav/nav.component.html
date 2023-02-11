@@ -1,8 +1,8 @@
 <nav class="navbar container">
-  <figure class="navbar--logo">
+  <a class="navbar--logo" routerLink="/">
     <img src="../../../assets/images/logo.svg" alt="Platzi Store" width="44" height="44">
     <span>MY STORE</span>
-  </figure>
+  </a>
   <div class="navbar--profile">
     <div class="navbar--profile__auth">
       <div (click)="onModalAuth(true)" *ngIf="!isAuth">

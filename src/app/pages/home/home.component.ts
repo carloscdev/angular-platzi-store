@@ -1,7 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { ProductInterface } from 'src/app/interfaces/product.interface';
+import { CategoryInterface, ProductInterface } from 'src/app/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
+import { CategoryService } from 'src/app/services/category.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +18,13 @@ export class HomeComponent implements OnInit {
   isLoadingTwo = false;
   productList: ProductInterface[] = [];
   productListRandom: ProductInterface[] = [];
+  categoryList: CategoryInterface[] = [];
+  productId: string | null = null;
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private categoryService: CategoryService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -37,14 +43,27 @@ export class HomeComponent implements OnInit {
           this.productList = productList;
         });
     }, 3000);
+    this.getCategoryList()
     this.isLoading = false;
+    this.route.queryParamMap
+      .subscribe(params => {
+        this.productId = params.get('product');
+      });
+  }
+
+  getCategoryList() {
+    this.categoryService.getCategoryList()
+      .subscribe((categories) => {
+        setTimeout(() => {
+          this.categoryList = categories
+        }, 2000);
+      });
   }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
     const current = event.target.documentElement.scrollHeight;
     const end = current / 2 + window.scrollY - 200;
-    console.log(current, end)
     if (current < end && !this.isLoadingTwo && !this.isLoading) {
       this.isLoadingTwo = true;
       this.offset += this.limit;

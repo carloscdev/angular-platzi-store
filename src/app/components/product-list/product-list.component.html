@@ -1,5 +1,6 @@
 <div class="product-container">
   <app-banner
+  *ngIf="showBanner"
   [productList]="productListRandom"
   (showProductDetail)="onShowProductDetail($event)"
   ></app-banner>

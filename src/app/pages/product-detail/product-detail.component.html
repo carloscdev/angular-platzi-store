@@ -1,0 +1,35 @@
+<section *ngIf="product">
+  <div class="product">
+    <div class="product--images">
+      <app-image [image]="currentImage" [text]="product.title"></app-image>
+      <ul class="product--images__list">
+        <li *ngFor="let image of product.images" (click)="replaceImage(image)" [class.active]="image === currentImage">
+          <app-image [image]="image" [text]="product.title"></app-image>
+        </li>
+      </ul>
+    </div>
+    <div class="product--description">
+      <h2>{{ product.title }}</h2>
+      <p class="price">
+        <strong>{{ product.price | currency:'$ ' }}</strong>
+        <span>
+          {{ product.price | discount | currency:'$ '}}
+        </span>
+      </p>
+      <p class="description">
+        Description: {{ product.description}}
+      </p>
+      <p class="category">
+        Category: {{ product.category.name}}
+      </p>
+      <div class="options">
+        <button>
+          <fa-icon [icon]="faCartShopping"></fa-icon> Add to Cart
+        </button>
+        <button>
+          <fa-icon [icon]="faEye"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

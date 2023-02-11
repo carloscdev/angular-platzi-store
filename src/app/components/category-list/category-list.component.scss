@@ -1,0 +1,26 @@
+.category-list {
+  &--item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 3rem;
+    li {
+      background-color: var(--white-color);
+      font-size: 1.6rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      &:hover {
+        box-shadow: 0 0 30px 3px rgba(0,0,0,0.1);
+      }
+      a {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        &.active {
+          background-color: var(--primary-color);
+          color: var(--white-color);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

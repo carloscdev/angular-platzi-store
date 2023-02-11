@@ -1,0 +1,14 @@
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  a {
+    font-weight: bold;
+    font-size: 1.6rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}

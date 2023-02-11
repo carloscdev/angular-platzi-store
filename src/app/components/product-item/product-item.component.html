@@ -6,12 +6,15 @@
     <section class="product-item--image">
       <app-image [image]="product.images[0]" [text]="product.title"></app-image>
       <div *ngIf="gridList" class="product-item--image__options">
-        <p (click)="onShowProductDetail()"><fa-icon [icon]="faEye"></fa-icon></p>
+        <!-- <p (click)="onShowProductDetail()"><fa-icon [icon]="faEye"></fa-icon></p> -->
+        <a routerLink="." [queryParams]="{product: product.id}"><fa-icon [icon]="faEye"></fa-icon></a>
         <p (click)="onAddToCart()"><fa-icon [icon]="faCartShopping"></fa-icon></p>
       </div>
     </section>
     <div class="product-item--description" *ngIf="gridList; else gridDescription">
-      <h3>{{ product.title }}</h3>
+      <h3>
+        <a [routerLink]="['/product', product.id]">{{ product.title }}</a>
+      </h3>
       <p>
         {{ product.price | currency:'$ ' }}
         <span>
@@ -22,7 +25,9 @@
     <ng-template #gridDescription>
       <div class="product-item--description">
         <div class="product-item--description__info">
-          <h3>{{ product.title }}</h3>
+          <h3>
+            <a [routerLink]="['/product', product.id]">{{ product.title }}</a>
+          </h3>
           <p>
             {{ product.price | currency:'$ ' }}
             <span>
@@ -34,9 +39,12 @@
           </small>
         </div>
         <div class="product-item--description__options">
-          <button (click)="onAddToCart()">
+          <!-- <button (click)="onAddToCart()">
             <fa-icon [icon]="faCartShopping"></fa-icon> Add to Cart
-          </button>
+          </button> -->
+          <a class="button" routerLink="." [queryParams]="{product: product.id}">
+            <fa-icon [icon]="faCartShopping"></fa-icon> Add to Cart
+          </a>
           <button (click)="onShowProductDetail()">
             <fa-icon [icon]="faEye"></fa-icon>
           </button>
