@@ -6,7 +6,7 @@ import { Component,  Input} from '@angular/core';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent {
-  imageDefault: string = '../../../assets/images/error-image.jpg'
+  imageDefault: string = '../../../../assets/images/error-image.jpg'
   image: string = '';
   text: string = '';
 

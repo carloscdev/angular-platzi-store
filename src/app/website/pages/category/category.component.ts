@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { CategoryInterface, ProductInterface } from 'src/app/interfaces/product.interface';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -38,7 +38,7 @@ export class CategoryComponent implements OnInit {
         setTimeout(() => {
           this.productList = products
           this.getCategoryList()
-        }, 2000);
+        }, 1000);
       });
     this.route.queryParamMap
       .subscribe(params => {

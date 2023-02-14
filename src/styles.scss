@@ -61,6 +61,6 @@ button, .button {
   border-radius: 0.5rem;
   &:hover {
     background-color: var(--danger-light-color);
-    color: var(--danger-color);
+    color: var(--danger-color) !important;
   }
 }

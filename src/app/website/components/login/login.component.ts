@@ -2,8 +2,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { switchMap } from 'rxjs';
 import { UserInterface } from 'src/app/interfaces/user.interface';
-import { AuthService } from '../../services/auth.service';
-import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../../services/auth.service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-login',

@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { CategoryInterface, ProductInterface } from 'src/app/interfaces/product.interface';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
         .subscribe((productList) => {
           this.productList = productList;
         });
-    }, 3000);
+    }, 1000);
     this.getCategoryList()
     this.isLoading = false;
     this.route.queryParamMap
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
       .subscribe((categories) => {
         setTimeout(() => {
           this.categoryList = categories
-        }, 2000);
+        }, 1000);
       });
   }
 

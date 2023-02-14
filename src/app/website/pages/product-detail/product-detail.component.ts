@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { ProductInterface } from 'src/app/interfaces/product.interface';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 import { faCartShopping, faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
