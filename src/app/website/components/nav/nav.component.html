@@ -5,15 +5,17 @@
   </a>
   <div class="navbar--profile">
     <div class="navbar--profile__auth">
-      <div (click)="onModalAuth(true)" *ngIf="!isAuth">
+      <div (click)="onModalAuth(true)" *ngIf="!profile">
         <fa-icon [icon]="faRightToBracket"></fa-icon>
         <span>Login</span>
       </div>
-      <div *ngIf="isAuth">
-        <fa-icon [icon]="faUser"></fa-icon>
-        <span>{{ profile.email }}</span>
+      <div *ngIf="profile">
+        <a routerLink="profile">
+          <fa-icon [icon]="faUser"></fa-icon>
+          <span>{{ profile.email }}</span>
+        </a>
       </div>
-      <div class="is-danger" *ngIf="isAuth" (click)="onLogout()">
+      <div class="is-danger" *ngIf="profile" (click)="onLogout()">
         <fa-icon [icon]="faRightToBracket"></fa-icon>
         <span>Salir</span>
       </div>

@@ -9,7 +9,6 @@ import { NavComponent } from './components/nav/nav.component';
 
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-import { CategoryComponent } from './pages/category/category.component';
 import { MycartComponent } from './pages/mycart/mycart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
@@ -21,12 +20,13 @@ import { TokenInterceptor } from '../interceptors/token.interceptor';
 
 import { FormsModule } from '@angular/forms';
 
+import { QuicklinkModule } from 'ngx-quicklink';
+
 @NgModule({
   declarations: [
     NavComponent,
     LoginComponent,
     HomeComponent,
-    CategoryComponent,
     MycartComponent,
     ProfileComponent,
     ProductDetailComponent,
@@ -39,7 +39,8 @@ import { FormsModule } from '@angular/forms';
     SwiperModule,
     FormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    QuicklinkModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

@@ -10,8 +10,8 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuth = new BehaviorSubject<boolean>(false);
-  isAuth$ = this.isAuth.asObservable();
+  private user = new BehaviorSubject<UserInterface | null>(null);
+  user$ = this.user.asObservable();
 
   private BASE_URL = 'https://api.escuelajs.co/api/v1/auth';
 
@@ -30,10 +30,9 @@ export class AuthService {
   }
 
   getProfile() {
-    return this.http.get<UserInterface>(`${this.BASE_URL}/profile`);
-  }
-
-  setIsAuth(isAuth: boolean) {
-    this.isAuth.next(isAuth);
+    return this.http.get<UserInterface>(`${this.BASE_URL}/profile`)
+      .pipe(
+        tap(user => this.user.next(user))
+      );
   }
 }

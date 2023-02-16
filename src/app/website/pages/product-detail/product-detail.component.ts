@@ -5,12 +5,14 @@ import { ProductInterface } from 'src/app/interfaces/product.interface';
 import { ProductsService } from '../../../services/products.service';
 import { faCartShopping, faEye } from '@fortawesome/free-solid-svg-icons';
 
+import { OnExit } from 'src/app/guards/exit.guard';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnExit {
   faCartShopping = faCartShopping;
   faEye = faEye;
 
@@ -39,5 +41,10 @@ export class ProductDetailComponent {
 
   replaceImage(image: string) {
     this.currentImage = image;
+  }
+
+  onExit() {
+    const rta = confirm('Estás seguro de volver a la pantalla principal');
+    return rta;
   }
 }

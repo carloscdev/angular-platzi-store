@@ -4,6 +4,7 @@ import { UserInterface } from 'src/app/interfaces/user.interface';
 import { StoreService } from 'src/app/services/store.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -17,21 +18,13 @@ export class NavComponent implements OnInit {
   counterCart = 0;
   modalAuth = false;
   isAuth = false;
-  profile: UserInterface = {
-    id: '',
-    email: '',
-    password: '',
-    name: '',
-    role: '',
-    avatar: '',
-    creationAt: '',
-    updatedAt: ''
-  }
+  profile: UserInterface | null = null
 
   constructor(
     private storeService: StoreService,
     private authService: AuthService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -39,14 +32,8 @@ export class NavComponent implements OnInit {
       .subscribe(products => {
         this.counterCart = products.length;
       })
-
-    this.authService.isAuth$
-      .subscribe(value => this.isAuth = value);
-
-    if (this.isAuth) {
-      this.authService.getProfile()
-        .subscribe(profile => this.profile = profile);
-    }
+    this.authService.user$
+      .subscribe(profile => this.profile = profile);
   }
 
   onModalAuth(value: boolean) {
@@ -55,14 +42,11 @@ export class NavComponent implements OnInit {
 
   onLoadProfile(profile: UserInterface) {
     this.profile = profile;
-    this.authService.isAuth$
-      .subscribe(value => this.isAuth = value);
   }
 
   onLogout() {
     this.tokenService.removeToken();
-    this.authService.setIsAuth(false);
-    this.authService.isAuth$
-      .subscribe(value => this.isAuth = value);
+    this.router.navigate(['/']);
+    this.profile = null
   }
 }
